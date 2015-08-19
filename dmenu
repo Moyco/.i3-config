@@ -1,0 +1,2 @@
+#!/bin/sh    
+/usr/local/bin/dmenu -w 1920 -h 20 -x 0 -y 0 -p ">" -i -fn "DejaVu Sans Mono-7.5" -nb "#e9e9e9" -nf "#8f8f8f" -sb "#7fa5eb" -sf "#eeeeee"

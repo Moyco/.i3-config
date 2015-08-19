@@ -1,0 +1,64 @@
+#!\bin\bash
+# i3 panel config. Powerline style.
+
+panel_fifo="/tmp/i3_bar_${USER}"
+geometry="x20"
+font1="DejaVu Sans Mono-7.5"
+font2="Sazanami Gothic-7.5"
+iconfont="FontAwesome-7.5"
+res_w=$(xrandr | grep "current" | awk '{print $8a}')
+snd_cha=$(amixer get Master -M | grep "Playback channels:" | awk '{if ($4 == "") {printf "%s: Playback", $3} else {printf "%s %s: Playback", $3, $4}}')
+
+# Alarm settings
+cpu_alert=75                        # % cpu use
+net_alert=5                         # K net use
+#
+# color definitions 
+bar_back="#e9e9e9"            # Default Bar background
+bar_fore="#576D80"            # Default Bar foreground
+ws_back="#dddddd"             # Default Workspace background
+ws_fore="#c0c0c0"             # Default Workspace foreground
+ws_foc_back=${ws_back}          # Focus Workspace background
+ws_foc_fore="#75aaaf"         # Focus Workspace foreground
+ws_ina_back=${ws_back}          # Inactive Workspace background
+ws_ina_fore="#c0c0c0"         # Inactive Workspace foreground
+ws_urg_back=${ws_back}          # Urgent Workspace background
+ws_urg_fore="#bd4e44"         # Urgent Workspace foreground
+net_up_back="#e1e1e1"
+net_up_fore=${bar_fore}
+net_ina_back="#eeeeee"
+net_ina_fore="#cccccc"
+net_down_back="#eeeeee"
+net_down_fore="#db5858"
+date_back=${bar_back}
+date_fore="#828282"
+hour_back="#dddddd"
+hour_fore="#828282"
+music_play="#7086b1"
+music_pause="#b28c55"
+music_stop="#b26f7a"
+music_back="#eeeeee"
+
+# Actions
+ws_mw_up="i3-msg 'workspace prev'"
+ws_mw_down="i3-msg 'workspace next'"
+music_next="mpc -h 010596321@localhost next"
+music_prev="mpc -h 010596321@localhost prev"
+
+#default space between sections
+if [ ${res_w} -gt 1024 ]; then
+  stab='  '
+else
+  stab=' '
+fi
+
+# Icon glyphs from Terminusicons2
+icon_dl=""                         # Download icon
+icon_ul=""                         # Upload icon
+icon_vol=""                        # Volume icon
+icon_play=""                       # Play icon
+icon_pause=""                      # Pause icon
+icon_stop=""                       # Stop icon
+icon_next=""                       # Skip next music icon
+icon_prev=""                       # Skip previous music icon
+icon_music=""                      # Music icon
